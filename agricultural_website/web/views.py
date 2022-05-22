@@ -20,7 +20,7 @@ def contact(request):
         message_last_name = request.POST['message-last-name']
         message_company = request.POST['message-company']
         message_email = request.POST['message-email']
-        email = 'bluewoodalerts@outlook.com'
+        email = 'INSERT EMAIL HERE'
         message_phone = request.POST['message-phone']
         message = request.POST['message']
 
@@ -28,7 +28,7 @@ def contact(request):
             'Service Inquiry: ' + message_first_name + " " + message_last_name,  #SUBJECT
             'Customer Name: ' + message_first_name + " " + message_last_name + "\nCompany: " + message_company + "\nEmail: " + message_email  + '\nPhone: ' + message_phone + '\n \nMessage: \n' + message, #MESSAGE
             email, #FROM EMAILS
-            ['evan.shields@shieldedsolutions.com'], #TO EMAIL
+            ['INSERT EMAIL HERE'], #TO EMAIL
             fail_silently=False,
         )
 
