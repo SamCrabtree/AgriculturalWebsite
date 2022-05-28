@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% block title %}Contact Us! | The Berry Patch {% endblock %}
+{% block content %}
+
+<div class="container">
+  <div class="card border-0 shadow my-5">
+    <div class="card-body p-5">
+
+  {% if message_first_name %}
+  <br/>
+  <div class="alert alert-success" role="alert">
+    <center>Thank you {{ message_first_name }} for your interest! We look forward to speaking with you soon.</center>
+  </div>
+ <center> <a href="{% url 'home' %}" class="btn btn-lg btn-dark m-3">Home</a></center>
+  {% else %}
+ 
+<br/>
+<br/>
+  <blockquote class="blockquote text-center">
+    <h3 class="mb-0">Looking for more information?<br> Send us a message!</h3>  
+  </blockquote>
+<br/>
+<hr/>
+<br/>
+
+<form action="{% url 'contact' %}" method='post' class="w-85 rounded-3 p-3 mx-auto">
+    {% csrf_token %}
+    <div class="row">
+        <div class="col">
+        <label for="First name" class="form-label">First Name</label>
+          <input type="text" name="message-first-name" class="form-control" placeholder="First name" aria-label="First name"required>
+        </div>
+        <div class="col">
+            <label for="Last name" class="form-label">Last Name</label>
+          <input type="text" name="message-last-name" class="form-control" placeholder="Last name" aria-label="Last name"required>
+        </div>
+      </div>
+      <br/>
+      <div class="company">
+        <div class="col">
+            <label for="company" class="form-label">Company, Group, or Organization</label>
+            <input type="text" name="message-company" class="form-control" id="company" aria-describedby="company">       
+        </div>
+
+      </div>
+      <br/>
+      <div class="row">
+        <div class="col">
+            <label for="email" class="form-label">Email address</label>
+            <input type="email" name="message-email"class="form-control" id="email" aria-describedby="emailHelp">        
+        </div>
+      </div>
+      <br/>
+
+      <div class="row">
+        <div class="col">
+            <label for="phone"class="form-label">Phone</label>
+          <input type="tel"  name="message-phone" id="phone" name="phone"
+          pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" class="form-control" placeholder="ex. 111-111-1111" aria-label="phone" required>
+        </div>
+        
+      </div>
+      <br/>
+
+      <div class="row">
+        <div class="col">
+            <label for="message" class="form-label">Message</label>
+          <textarea class="form-control" name="message" aria-label="message" required></textarea>
+        </div>
+        
+      </div>
+      <br/>
+    <button type="submit" class="btn btn-dark">Submit</button>
+  </form>
+</div>
+{% endif %}
+    </div>
+  </div>
+</div>
+
+
+\
+ 
+{%endblock%}

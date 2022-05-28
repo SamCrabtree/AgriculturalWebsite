@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Smooch&display=swap');
+
+.nav-item-font{
+    font-family: 'Smooch', cursive;
+    
+}
+
+.nav-item-color{
+    color: #E2C2C6;
+}
+
+.navbar-purple{
+    background-color: #2F0147;
+}
+
+body {
+    background: url('/img/farm1.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+  }
+
+#intro {
+    background-image: url("/static/img/farm1.jpg");
+    height: 100vh;
+  }

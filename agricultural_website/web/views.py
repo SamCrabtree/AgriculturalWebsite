@@ -1,7 +1,8 @@
 from django.shortcuts import render
-
+from django.views.generic import ListView, DetailView
 from django.shortcuts import render
 from django.core.mail import send_mail
+from .models import Post
 
 
 # Create your views here.
@@ -11,8 +12,16 @@ def home(request):
 def about(request):
     return render(request, 'about.html', {}) 
 
-def blog(request):
-    return render(request, 'blog.html', {})
+class BlogView(ListView):
+    model = Post
+    template_name = 'blog_list.html'
+
+class PostDetailsView(DetailView):
+    model = Post
+    template_name = 'blog_list.html'
+
+
+
 
 def contact(request):
    if request.method == "POST":
