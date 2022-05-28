@@ -6,11 +6,14 @@
 <div class="container">
     <div class="card border-0 shadow my-5">
       <div class="card-body p-5">
-        <h1 class="fw-light">Create a Post</h1>
-        <p class="lead">Use the form below to create a new public facing post.</p>
-        <p class="lead">Scroll down...</p>
-        <div style="height: 700px"></div>
-        <p class="lead mb-0">You've reached the end!</p>
+        <h1 class="nav-item-font">Create a Post</h1>
+        <div class="form-group">
+        <form method="POST">
+          {% csrf_token %}
+          {{ form.as_p }}
+          <button class="btn btn-secondary">POST</button>
+        </form>
+        </div>
       </div>
     </div>
   </div>

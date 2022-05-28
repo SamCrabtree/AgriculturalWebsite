@@ -1,8 +1,9 @@
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, CreateView
 from django.shortcuts import render
 from django.core.mail import send_mail
 from .models import Post
+from .forms import PostForm
 
 
 # Create your views here.
@@ -20,7 +21,10 @@ class PostDetailsView(DetailView):
     model = Post
     template_name = 'blog_list.html'
 
-
+class CreatePostView(CreateView):
+    model = Post
+    form_class = PostForm
+    template_name = 'create_post.html'
 
 
 def contact(request):
