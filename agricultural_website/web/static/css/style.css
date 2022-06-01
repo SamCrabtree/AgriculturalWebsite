@@ -14,14 +14,17 @@
 }
 
 body {
-    background: url('/img/farm1.jpg') no-repeat center center fixed;
+    background: url("../img/farm1.jpg") no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
   }
 
-#intro {
-    background-image: url("/static/img/farm1.jpg");
-    height: 100vh;
-  }
+div.opac {
+    opacity: 0.9 !important;
+} 
+
+.ft {
+    color: white;
+}

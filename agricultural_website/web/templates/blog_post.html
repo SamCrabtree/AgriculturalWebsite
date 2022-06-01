@@ -6,12 +6,21 @@
 <div class="container">
     <div class="card border-0 shadow my-5">
       <div class="card-body p-5">
-        <h1 class="nav-item-font">{{post.title}}</h1>
-        <p class="lead">In this snippet, the background image is fixed to the body element. Content on the page will
-          scroll, but the image will remain in a fixed position!</p>
-        <p class="lead">Scroll down...</p>
-        <div style="height: 700px"></div>
-        <p class="lead mb-0">You've reached the end!</p>
+        <p class="h1 nav-item-font">{{post.title}}</p>
+       <p><em><small>{{post.author.first_name}} - {{post.post_date}}</small></em></p>
+        <center>
+        <img src="{{post.header_image.url }}" class="img-fluid">
+        </center>
+        <p class="lead">{{post.body | safe }}</p>
+        {% if user.is_authenticated %}
+        <center>
+        <br/>
+        <br/>
+        <a href="{% url 'update_post' post.pk %}"> <button class="btn btn-warning">EDIT</button></a>
+        <a href="{% url 'delete_post' post.pk %}"> <button class="btn btn-danger">DELETE</button></a>  
+        </center>
+        {% else %}
+        {% endif %}
       </div>
     </div>
   </div>

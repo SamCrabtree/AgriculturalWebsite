@@ -126,7 +126,8 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR / "static"
-
+MEDIA_URL = 'media/'
+MEDIA_ROOT = BASE_DIR / "media"
 
 #Email Settings
 EMAIL_USE_TLS = True
@@ -140,3 +141,10 @@ EMAIL_PORT = 587
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CKEDITOR_CONFIGS = {
+'default': {
+    'width': 'auto',
+
+          },
+    }

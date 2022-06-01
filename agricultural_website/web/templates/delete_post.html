@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Admin Only | Delete Post {% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="card border-0 shadow my-5">
+      <div class="card-body p-5">
+        <h1 class="nav-item-font">Delete Post</h1>
+        <div class="form-group">
+        <form method="POST">
+          {% csrf_token %}
+         <strong> Are you sure you want to delete the folowing post? This cannot be undone.</strong>
+         <br/>         
+         <br/>
+         <br/>
+         {{post.title}} 
+         {{post.author.first_name}} {{post.author.last_name}} - {{post.post_date}}
+         {{post.body | safe}}
+         <br/>
+         <br/>
+          <button class="btn btn-danger">DELETE</button>
+        </form>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

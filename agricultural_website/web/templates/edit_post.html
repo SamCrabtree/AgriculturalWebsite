@@ -1,18 +1,18 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}Admin Only | Create Post {% endblock %}
+{% block title %}Admin Only | Edit Post {% endblock %}
 
 {% block content %}
 <div class="container">
     <div class="card border-0 shadow my-5">
       <div class="card-body p-5">
-        <h1 class="nav-item-font">Create a Post</h1>
+        <h1 class="nav-item-font">Edit a Post</h1>
         <div class="form-group">
-        <form method="POST" enctype="multipart/form-data">
+        <form method="POST">
           {% csrf_token %}
           {{ form.media }}
           {{ form.as_p }}
-          <button class="btn btn-primary">POST</button> 
+          <button class="btn btn-primary">SAVE</button>
         </form>
         </div>
       </div>

@@ -7,7 +7,7 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'css/style.css' %}" >
-    <title>{% block title %}Welcome!{% endblock %}</title>
+    <title>{% block title %}Welcome!{% endblock %}</title> 
   </head>
 
 <nav class="navbar navbar-expand-lg navbar-dark navbar-purple static-top shadow">
@@ -18,7 +18,7 @@
         </button>
         <div class="collapse navbar-collapse " id="navbarSupportedContent">
         <div class="collapse navbar-collapse me-auto" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <ul class=" nav navbar-nav me-auto mb-2 mb-lg-0 justify-content-end">
           <li class="nav-item">
             <a class="nav-link nav-med nav-item-font text-white" href="{% url 'home' %}">Home</a>
           </li>
@@ -26,7 +26,7 @@
             <a class="nav-link nav-med nav-item-font text-white" href="{% url 'about' %}">About</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link nav-med nav-item-font text-white" href="#">Goods</a>
+            <a class="nav-link nav-med nav-item-font text-white" href="{% url 'goods' %}">Goods</a>
           </li>
           <li class="nav-item">
             <a class="nav-link nav-med nav-item-font text-white" href="{% url 'blog' %}">Blog</a>
@@ -49,8 +49,9 @@
     {% endblock %}
 
 
-    <footer class="m-3">
-        <center>
+    <footer class="footer mt-auto py-3 m-3">
+      <div class="container">  
+      <center>
           <!-- <div class="btn-group mb-2">
    
             <button onclick="window.location.href='https://www.google.com';" type="button" class="btn btn-outline-dark">
@@ -74,8 +75,9 @@
             </button>
           </div>
           <br/> -->
-          <small>&copy;{%now "Y"%} The Berry Patch - All Rights Reserved<br/> </small>
+          <p><small class="ft">&copy;{%now "Y"%} The Berry Patch - All Rights Reserved<br/> </small></p>
         </center> 
+        </div
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>

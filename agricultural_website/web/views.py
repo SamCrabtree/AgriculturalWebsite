@@ -1,9 +1,11 @@
+from audioop import reverse
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.shortcuts import render
 from django.core.mail import send_mail
 from .models import Post
 from .forms import PostForm
+from django.urls import reverse_lazy
 
 
 # Create your views here.
@@ -13,18 +15,35 @@ def home(request):
 def about(request):
     return render(request, 'about.html', {}) 
 
+def goods(request):
+    return render (request, 'products.html', {})
+
 class BlogView(ListView):
     model = Post
     template_name = 'blog_list.html'
+    ordering = ['post_date']
 
 class PostDetailsView(DetailView):
     model = Post
-    template_name = 'blog_list.html'
+    template_name = 'blog_post.html'
 
 class CreatePostView(CreateView):
     model = Post
     form_class = PostForm
     template_name = 'create_post.html'
+
+class UpdatePostView(UpdateView):
+    model = Post
+    form_class = PostForm
+    template_name = 'edit_post.html'
+
+class DeletePost(DeleteView):
+    model = Post
+    template_name = 'delete_post.html'
+    success_url = reverse_lazy('blog')
+
+
+    
 
 
 def contact(request):
