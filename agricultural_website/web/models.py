@@ -23,10 +23,13 @@ class Post(models.Model):
 class Products(models.Model):
      product_name = models.CharField(max_length=255)
      product_order = models.PositiveIntegerField()
-     product_cost = models.CharField(max_length=255)
      product_image = models.ImageField(null=True, blank=True, upload_to='Images/')
      product_details = models.CharField(max_length=255)
-     product_available = models.BooleanField(default=True)
+     pick_available = models.BooleanField(default=True)
+     pick_cost = models.CharField(default='0.00', null=True, blank=True,max_length=255)
+     order_available = models.BooleanField(default=True)
+     order_cost = models.CharField(default='0.00', null=True, blank=True,max_length=255)
+
 
      def __str__(self):
           return self.product_name + ' | $' + self.product_cost + ' | Available:' + str(self.product_available)
@@ -37,5 +40,9 @@ class Products(models.Model):
 
 
 
-
+class Alerts(models.Model):
+     title = models.CharField(max_length=255)
+     content = models.CharField(max_length=255)
+     def __str__(self):
+          return self.title
      

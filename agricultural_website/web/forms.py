@@ -15,6 +15,7 @@ class PostForm(forms.ModelForm):
 class ProductsForm(forms.ModelForm):
     class Meta:
         model = Products
-        fields = ('product_name', 'product_order', 'product_image', 'product_details', 'product_cost', 'product_available')
+        fields = ('product_name', 'product_order', 'product_image', 'product_details', 'pick_available', 'pick_cost',
+                  'order_available', 'order_cost')
 
 

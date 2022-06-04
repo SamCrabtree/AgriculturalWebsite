@@ -4,18 +4,33 @@
 
 {% block content %}
 <div class="container opac">
-    <div class="card border-0 shadow my-5">
+    <div class="card border-0 shadow my-5 text-white rounded bg-dark">
       <div class="card-body p-5">
         <p class="h1 nav-item-font">{{post.title}}</p>
        <p><em><small>{{post.author.first_name}} - {{post.post_date}}</small></em></p>
         {% if post.header_image %}
 
          <div class="text-center">
-        <img src="{{post.header_image.url }}" class="img-fluid">
+        <img src="{{post.header_image.url }}" class="img-fluid rounded border border-5" style="max-width:80%;">
         </div>
         {% endif %}
         <p class="lead">{{post.body | safe }}</p>
         {% if user.is_authenticated %}
+            <div class="d-flex justify-content-center">
+            <div class="card text-white rounded bg-dark border-secondary" style="width: 18rem;">
+              <div class="card-header text-center border-secondary">
+                <strong>Admin Tools</strong>
+              </div>
+              <ul class="list-group list-group-flush text-white rounded bg-dark border-secondary">
+                <li class="list-group-item text-center text-white rounded bg-dark border-secondary">
+        <a href="{% url 'update_post' post.pk %}"> <button class="btn btn-warning">EDIT</button></a>
+                </li>
+                  <li class="list-group-item text-center text-white rounded bg-dark border-secondary">
+        <a href="{% url 'delete_post' post.pk %}"> <button class="btn btn-danger">DELETE</button></a>
+                </li>
+              </ul>
+            </div>
+              </div>
         <div class="text-center">
         <br/>
         <br/>

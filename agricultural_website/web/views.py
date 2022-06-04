@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.shortcuts import render
 from django.core.mail import send_mail
-from .models import Post, Products
+from .models import Post, Products, Alerts
 from .forms import PostForm, ProductsForm
 from django.urls import reverse_lazy
 

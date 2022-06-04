@@ -4,14 +4,31 @@
 
 {% block content %}
 <div class="container opac">
-    <div class="card border-0 shadow my-5">
+    <div class="card border-0 shadow my-5 text-white rounded bg-dark">
       <div class="card-body p-5">
-        <h1 class="nav-item-font">Goods, Services, and Produce</h1>
-      <br/>
+        <h1 class="nav-item-font">Produce and&nbsp; Services We Take Personal&nbsp; Pride in.</h1>
+<br/>
+      <p class="lead my-3">We believe hard work is the key to success. However, sometimes other factors (such as weather
+      and other acts of God) may affect the availability of our products. Check out our current offerings below. We
+          accept Venmo, Cash, or Check as payment. If you have any questions, don't hesitate to reach out! </p>
+          <br/>
+
             <div class="text-center">
+
               {% if user.is_authenticated %}
-                        <p> Admin Controls... <br/>
-                            <a href="{% url 'product_post' %}" class="btn btn-success text-center">Add New Product</a></p>
+                               <div class="d-flex justify-content-center">
+            <div class="card text-white rounded bg-dark border-secondary" style="width: 18rem;">
+              <div class="card-header text-center border-secondary">
+                <strong>Admin Tools</strong>
+              </div>
+              <ul class="list-group list-group-flush text-white rounded bg-dark border-secondary">
+                <li class="list-group-item text-white rounded bg-dark text-center border-secondary">
+ <a href="{% url 'product_post' %}" class="btn btn-success text-center">Add New Product</a>            </li>
+              </ul>
+            </div>
+              </div>
+              <br/>
+
               {% endif %}
             </div>
             <br/>
@@ -19,18 +36,67 @@
             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 d-flex justify-content-center g-4">
 
             {% for product in object_list %}
-            <div class="card m-1 p-1" style="width: 18rem;">
+            <div class="card m-1 p-1 text-white rounded bg-dark border-secondary" style="width: 18rem;">
             {% if product.product_image %}
                 <img src= "{{ product.product_image.url }}" class="card-img-top img-thumbnail" alt="...">
              {% endif %}
               <div class="card-body">
-                <h5 class="card-title">{{ product.product_name }}</h5>
-                <p class="card-text">{{ product.product_description }}</p>
+                  <h5 class="card-title nav-item-font text-center h3">{{ product.product_name }}</h5>
+                <table class="table text-white border border-secondary">
 
-                  {% if user.is_authenticated %}
-                        <a href="{% url 'delete_product' product.pk %}" class="btn btn-danger">Delete Product</a>  <a href="{% url 'update_product' product.pk %}" class="btn btn-warning text-center">Edit Products</a></p></p>
-              {% endif %}
+                      <tbody class="border-secondary">
+                        <tr>
+                            <td class="border-secondary" colspan="3">
+                                <strong>Details:</strong> <br/>{{ product.product_details }}
+                            </td>
+                        </tr>
+                         <tr>
+                            <td class="text-center align-middle border-secondary">Pick Your Own:</td>
+
+                                {% if product.pick_available == True %}
+                                    <td class="text-center border-secondary align-middle"colspan="2">${{ product.pick_cost }} </td>
+
+                                {% else %}
+                                    <td colspan=2 class="bg-danger text-center border-secondary align-middle"> Unavailable </td>
+                                {% endif %}
+
+
+                        </tr>
+                        <tr>
+                            <td class="text-center align-middle border-secondary align-middle">Orders:</td>
+
+                                {% if product.order_available == True %}
+                                    <td class="text-center align-middle" colspan="2">${{ product.order_cost }} </td>
+
+                                {% else %}
+                                    <td colspan=2 class="bg-danger text-center border-secondary align-middle"> Not Offered </td>
+                                {% endif %}
+
+
+                        </tr>
+                      </tbody>
+                </table>
+
+
               </div>
+                        {% if user.is_authenticated %}
+                                           <div class="d-flex justify-content-center">
+            <div class="card text-white rounded bg-dark border-secondary" style="width: 18rem;">
+              <div class="card-header text-center border-secondary">
+                <strong>Admin Tools</strong>
+              </div>
+              <ul class="list-group list-group-flush text-white rounded bg-dark border-secondary">
+                <li class="list-group-item text-center text-white rounded bg-dark border-secondary">
+                    <a href="{% url 'update_product' product.pk %}" class="btn btn-warning text-center">Edit Product</a>
+                </li>
+                  <li class="list-group-item text-center text-white rounded bg-dark border-secondary">
+                      <a href="{% url 'delete_product' product.pk %}" class="btn btn-danger">Delete Product</a>
+                </li>
+              </ul>
+            </div>
+              </div>
+
+            {% endif %}
             </div>
 
 
@@ -52,12 +118,16 @@
           </div>
 
           </div>
-        <div class="text-center">
-            <p>Interested in stopping by or placing an order?</p>
-            <p>
-                <a href="{% url 'contact' %}" class="btn btn-secondary">Contact Us</a>
-            </p>
-        </div>
+      <br/>
+      <div class="card text-center text-white rounded bg-dark">
+
+  <div class="card-body">
+      <h5 class="card-title"><em>Interested in stopping by or placing an order?</em></h5>
+    <p class="card-text">Send us a message and we would be happy to assist in anyway we can!</p>
+   <a href="{% url 'contact' %}" class="btn btn-secondary">Contact Us</a>  </div>
+
+</div>
+
       </div>
     </div>
   </div>
