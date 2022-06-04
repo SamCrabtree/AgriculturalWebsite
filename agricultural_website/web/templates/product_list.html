@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Products | The Berry Patch  {% endblock %}
+
+{% block content %}
+<div class="container opac">
+    <div class="card border-0 shadow my-5">
+      <div class="card-body p-5">
+        <h1 class="nav-item-font">Goods, Services, and Produce</h1>
+      <br/>
+            <div class="text-center">
+              {% if user.is_authenticated %}
+                        <p> Admin Controls... <br/>
+                            <a href="{% url 'product_post' %}" class="btn btn-success text-center">Add New Product</a></p>
+              {% endif %}
+            </div>
+            <br/>
+            <div class="container">
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 d-flex justify-content-center g-4">
+
+            {% for product in object_list %}
+            <div class="card m-1 p-1" style="width: 18rem;">
+            {% if product.product_image %}
+                <img src= "{{ product.product_image.url }}" class="card-img-top img-thumbnail" alt="...">
+             {% endif %}
+              <div class="card-body">
+                <h5 class="card-title">{{ product.product_name }}</h5>
+                <p class="card-text">{{ product.product_description }}</p>
+
+                  {% if user.is_authenticated %}
+                        <a href="{% url 'delete_product' product.pk %}" class="btn btn-danger">Delete Product</a>  <a href="{% url 'update_product' product.pk %}" class="btn btn-warning text-center">Edit Products</a></p></p>
+              {% endif %}
+              </div>
+            </div>
+
+
+
+            {% empty %}
+                <div class="card">
+
+  <div class="card-body">
+    <h5 class="card-title">No Products Currently Available</h5>
+    <p class="card-text">Check back later for updates.</p>
+  </div>
+</div>
+
+
+            {% endfor %}
+
+
+
+          </div>
+
+          </div>
+        <div class="text-center">
+            <p>Interested in stopping by or placing an order?</p>
+            <p>
+                <a href="{% url 'contact' %}" class="btn btn-secondary">Contact Us</a>
+            </p>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

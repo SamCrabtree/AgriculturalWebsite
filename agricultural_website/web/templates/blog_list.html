@@ -6,11 +6,11 @@
 <div class="container opac">
     <div class="card border-0 shadow my-5">
       <div class="card-body p-5">
-        <center>
+        <div class="text-center">
           <h1 class="nav-item-font">The Berry Patch's Latest News...</h1>
           {% if user.is_authenticated %}
           <a href="{% url 'blog_post'%}" class="btn btn-success">Create New Post</a>   
-        </center>
+        </div>
         <br/>
         {% else %}
         {% endif %}

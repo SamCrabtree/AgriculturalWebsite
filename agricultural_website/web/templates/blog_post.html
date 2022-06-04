@@ -3,22 +3,25 @@
 {% block title %}The Berry Patch | {{post.title}} {% endblock %}
 
 {% block content %}
-<div class="container">
+<div class="container opac">
     <div class="card border-0 shadow my-5">
       <div class="card-body p-5">
         <p class="h1 nav-item-font">{{post.title}}</p>
        <p><em><small>{{post.author.first_name}} - {{post.post_date}}</small></em></p>
-        <center>
+        {% if post.header_image %}
+
+         <div class="text-center">
         <img src="{{post.header_image.url }}" class="img-fluid">
-        </center>
+        </div>
+        {% endif %}
         <p class="lead">{{post.body | safe }}</p>
         {% if user.is_authenticated %}
-        <center>
+        <div class="text-center">
         <br/>
         <br/>
         <a href="{% url 'update_post' post.pk %}"> <button class="btn btn-warning">EDIT</button></a>
         <a href="{% url 'delete_post' post.pk %}"> <button class="btn btn-danger">DELETE</button></a>  
-        </center>
+        </div>
         {% else %}
         {% endif %}
       </div>

@@ -3,8 +3,8 @@ from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.shortcuts import render
 from django.core.mail import send_mail
-from .models import Post
-from .forms import PostForm
+from .models import Post, Products
+from .forms import PostForm, ProductsForm
 from django.urls import reverse_lazy
 
 
@@ -16,7 +16,7 @@ def about(request):
     return render(request, 'about.html', {}) 
 
 def goods(request):
-    return render (request, 'products.html', {})
+    return render (request, 'product_list.html', {})
 
 class BlogView(ListView):
     model = Post
@@ -42,9 +42,25 @@ class DeletePost(DeleteView):
     template_name = 'delete_post.html'
     success_url = reverse_lazy('blog')
 
+class ProductView(ListView):
+    model = Products
+    template_name = 'product_list.html'
+    ordering = ['product_order']
 
-    
+class CreateProductView(CreateView):
+    model = Products
+    form_class = ProductsForm
+    template_name = 'create_product.html'
 
+class UpdateProductView(UpdateView):
+    model = Products
+    form_class = ProductsForm
+    template_name = 'edit_product.html'
+
+class DeleteProduct(DeleteView):
+    model = Products
+    template_name = 'delete_product.html'
+    success_url = reverse_lazy('products')
 
 def contact(request):
    if request.method == "POST":

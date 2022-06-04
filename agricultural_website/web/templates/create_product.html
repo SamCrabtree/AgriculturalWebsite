@@ -1,18 +1,18 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}Admin Only | Edit Post {% endblock %}
+{% block title %}Admin Only | Create Product {% endblock %}
 
 {% block content %}
 <div class="container opac">
     <div class="card border-0 shadow my-5">
       <div class="card-body p-5">
-        <h1 class="nav-item-font">Edit a Post</h1>
+        <h1 class="nav-item-font">Add a Product</h1>
         <div class="form-group">
         <form method="POST" enctype="multipart/form-data">
           {% csrf_token %}
           {{ form.media }}
           {{ form.as_p }}
-          <button class="btn btn-primary">SAVE</button>
+          <button class="btn btn-primary">POST</button> 
         </form>
         </div>
       </div>
